@@ -969,6 +969,7 @@ int VolumeManager::shareVolume(const char *label, const char *method) {
     }
 
     if (v->getState() != Volume::State_Idle) {
+
         // You need to unmount manually before sharing
         errno = EBUSY;
         return -1;
@@ -985,6 +986,7 @@ int VolumeManager::shareVolume(const char *label, const char *method) {
         errno = EINVAL;
         return -1;
     }
+
 
 #ifdef VOLD_EMMC_SHARES_DEV_MAJOR
     // If emmc and sdcard share dev major number, vold may pick
@@ -1070,6 +1072,7 @@ int VolumeManager::unshareVolume(const char *label, const char *method) {
     }
 
     if ((fd = openLun(lun_number)) < 0) {
+
         return -1;
     }
 
